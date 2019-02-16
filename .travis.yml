@@ -1,6 +1,8 @@
 language: csharp
 mono: none
-dotnet: 2.2.103
+sudo: required
+dist: xenial
+dotnet: 2.2
 script:
-    - dotnet restore src/SparkleCreations.Jobcard.sln
-    - dotnet build src/SparkleCreations.Jobcard.sln
+    - dotnet restore
+    - dotnet build
