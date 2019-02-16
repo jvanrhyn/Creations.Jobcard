@@ -6,3 +6,4 @@ dotnet: 2.2
 script:
     - dotnet restore src/SparkleCreations.Jobcard.sln
     - dotnet build src/SparkleCreations.Jobcard.sln
+    - dotnet test src/Jobcard.Web.Tests/bin/Release/netcoreapp2.2/Jobcard.Web.Tests.dll
