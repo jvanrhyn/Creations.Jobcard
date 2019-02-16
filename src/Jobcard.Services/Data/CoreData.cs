@@ -8,7 +8,7 @@ namespace Jobcard.Services.Data
 {
     public abstract class CoreData
     {
-
+        
         public CoreData(string collectionName)
         {
             if (string.IsNullOrWhiteSpace(collectionName))
@@ -29,23 +29,19 @@ namespace Jobcard.Services.Data
 
         public IEnumerable<LayerKindDefault> GetAll()
         {
-            using (var db = new LiteDatabase(this.DatabaseName))
-            {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
+            using var db = new LiteDatabase(this.DatabaseName);
+            var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
 
-                return collection.FindAll();
-            }
+            return collection.FindAll();
         }
 
         public LayerKindDefault Add(LayerKindDefault layerKindDefault)
         {
-            using (var db = new LiteDatabase(this.DatabaseName))
-            {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
+            using var db = new LiteDatabase(this.DatabaseName);
+            var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
 
-                collection.Insert(layerKindDefault);
-                return layerKindDefault;
-            }
+            collection.Insert(layerKindDefault);
+            return layerKindDefault;
         }
     }
 }
