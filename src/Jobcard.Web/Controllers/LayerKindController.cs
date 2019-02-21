@@ -1,5 +1,6 @@
 ﻿using Jobcard.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,17 @@ namespace Jobcard.Web.Controllers
     [Route("api/[controller]")]
     public class LayerKindController : ControllerBase
     {
-        public LayerKindController()
-        {
+        private readonly ILogger<LayerKindController> _logger;
 
+        public LayerKindController(ILogger<LayerKindController> logger)
+        {
+            _logger = logger;
         }
 
         [HttpGet()]
         public ActionResult<IEnumerable<LayerKindDefault>> GetAll()
         {
+            _logger.LogInformation("Getting all Layerkind defaults");
             var result = new List<LayerKindDefault>
             {
                 new LayerKindDefault
