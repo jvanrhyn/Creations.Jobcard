@@ -17,9 +17,15 @@ namespace Jobcard.Services.Data
 
         internal string CollectionName { get; set; }
 
-        public void SetDatabase(string databaseName)
+        public void SetDatabase(string databaseName, bool clear = false)
         {
             this.DatabaseName = databaseName;
+            if (clear)
+            {
+                Clear();
+            }
         }
+
+        public abstract void Clear();
     }
 }
