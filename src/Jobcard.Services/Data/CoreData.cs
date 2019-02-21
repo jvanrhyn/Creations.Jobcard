@@ -1,7 +1,4 @@
-﻿using Jobcard.Models;
-using LiteDB;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Text;
 
 namespace Jobcard.Services.Data
@@ -16,36 +13,19 @@ namespace Jobcard.Services.Data
 
             this.CollectionName = collectionName;
         }
-        internal string DatabaseName { get; } = @"Creations";
+        internal string DatabaseName { get; private set;} = @"Creations";
 
         internal string CollectionName { get; set; }
-    }
 
-    public class DefaultsManager : CoreData
-    {
-        public DefaultsManager() : base(@"layerkinddefaults")
+        public void SetDatabase(string databaseName, bool clear = false)
         {
-        }
-
-        public IEnumerable<LayerKindDefault> GetAll()
-        {
-            using (var db = new LiteDatabase(this.DatabaseName))
+            this.DatabaseName = databaseName;
+            if (clear)
             {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
-
-                return collection.FindAll();
+                Clear();
             }
         }
 
-        public LayerKindDefault Add(LayerKindDefault layerKindDefault)
-        {
-            using (var db = new LiteDatabase(this.DatabaseName))
-            {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
-
-                collection.Insert(layerKindDefault);
-                return layerKindDefault;
-            }
-        }
+        public abstract void Clear();
     }
 }
