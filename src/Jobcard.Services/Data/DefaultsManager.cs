@@ -30,5 +30,13 @@ namespace Jobcard.Services.Data
                 return layerKindDefault;
             }
         }
+
+        public override void Clear()
+        {
+            using (var db = new LiteDatabase(this.DatabaseName))
+            {
+                db.DropCollection(this.CollectionName);
+            }
+        }
     }
 }

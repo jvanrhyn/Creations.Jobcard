@@ -12,7 +12,7 @@ namespace Jobcard.Web.Tests.Services.Data
         public void BasicTest()
         {
             DefaultsManager defaultsManager = new DefaultsManager();
-            defaultsManager.SetDatabase(@"TestDatabase");
+            defaultsManager.SetDatabase(@"TestDatabase", true);
 
             LayerKindDefault layerKindDefault = new LayerKindDefault
             {
