@@ -1,10 +1,7 @@
 ﻿using Jobcard.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Jobcard.Web.Controllers
 {
@@ -18,10 +15,10 @@ namespace Jobcard.Web.Controllers
             _logger = logger;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public ActionResult<IEnumerable<LayerKindDefault>> GetAll()
         {
-            _logger.LogInformation("Getting all Layerkind defaults");
+            _logger.LogInformation("Getting all Layer kind defaults");
             var result = new List<LayerKindDefault>
             {
                 new LayerKindDefault
