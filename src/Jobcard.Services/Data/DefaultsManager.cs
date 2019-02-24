@@ -12,9 +12,9 @@ namespace Jobcard.Services.Data
 
         public IEnumerable<LayerKindDefault> GetAll()
         {
-            using (var db = new LiteDatabase(this.DatabaseName))
+            using (var db = new LiteDatabase(DatabaseName))
             {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
+                var collection = db.GetCollection<LayerKindDefault>(CollectionName);
 
                 return collection.FindAll();
             }
@@ -22,9 +22,9 @@ namespace Jobcard.Services.Data
 
         public LayerKindDefault Add(LayerKindDefault layerKindDefault)
         {
-            using (var db = new LiteDatabase(this.DatabaseName))
+            using (var db = new LiteDatabase(DatabaseName))
             {
-                var collection = db.GetCollection<LayerKindDefault>(this.CollectionName);
+                var collection = db.GetCollection<LayerKindDefault>(CollectionName);
 
                 collection.Insert(layerKindDefault);
                 return layerKindDefault;
@@ -33,9 +33,9 @@ namespace Jobcard.Services.Data
 
         public override void Clear()
         {
-            using (var db = new LiteDatabase(this.DatabaseName))
+            using (var db = new LiteDatabase(DatabaseName))
             {
-                db.DropCollection(this.CollectionName);
+                db.DropCollection(CollectionName);
             }
         }
     }
