@@ -10,7 +10,7 @@ namespace Jobcard.Services.Data
             if (string.IsNullOrWhiteSpace(collectionName))
                 throw new ArgumentNullException();
 
-            this.CollectionName = collectionName;
+            CollectionName = collectionName;
         }
         internal string DatabaseName { get; private set;} = @"Creations";
 
@@ -18,7 +18,7 @@ namespace Jobcard.Services.Data
 
         public void SetDatabase(string databaseName, bool clear = false)
         {
-            this.DatabaseName = databaseName;
+            DatabaseName = databaseName;
             if (clear)
             {
                 Clear();
