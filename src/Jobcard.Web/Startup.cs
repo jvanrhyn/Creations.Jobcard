@@ -49,8 +49,8 @@ namespace Jobcard.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    "default",
+                    "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>
@@ -59,7 +59,7 @@ namespace Jobcard.Web
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    spa.UseReactDevelopmentServer("start");
                 }
             });
         }
